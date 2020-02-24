@@ -13,11 +13,14 @@ public enum Coin {
     case ethereum
     case litecoin
     case bitcoinCash
+    case bitcoinTestNet
     case dash
     
     //https://github.com/satoshilabs/slips/blob/master/slip-0132.md
     public var privateKeyVersion: UInt32 {
         switch self {
+        case .bitcoinTestNet:
+            return 0x04358394
         case .litecoin:
             return 0x019D9CFE
         case .bitcoinCash: fallthrough
@@ -32,6 +35,8 @@ public enum Coin {
     // P2PKH
     public var publicKeyHash: UInt8 {
         switch self {
+        case .bitcoinTestNet:
+            return 0x6F
         case .litecoin:
             return 0x30
         case .bitcoinCash: fallthrough
@@ -47,6 +52,8 @@ public enum Coin {
     // P2SH
     public var scriptHash: UInt8 {
         switch self {
+        case .bitcoinTestNet:
+            return 0xC4
         case .bitcoinCash: fallthrough
         case .litecoin: fallthrough
         case .bitcoin:
@@ -61,6 +68,7 @@ public enum Coin {
     //https://www.reddit.com/r/litecoin/comments/6vc8tc/how_do_i_convert_a_raw_private_key_to_wif_for/
     public var wifAddressPrefix: UInt8 {
         switch self {
+        case .bitcoinCash: fallthrough
         case .bitcoinCash: fallthrough
         case .bitcoin:
             return 0x80
@@ -89,6 +97,8 @@ public enum Coin {
     
     public var coinType: UInt32 {
         switch self {
+        case .bitcoinTestNet:
+            return 1
         case .bitcoin:
             return 0
         case .litecoin:

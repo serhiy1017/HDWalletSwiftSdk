@@ -31,6 +31,7 @@ public struct PublicKey {
     // NOTE: https://github.com/bitcoin/bips/blob/master/bip-0013.mediawiki
     public var address: String {
         switch coin {
+        case .bitcoinTestNet: fallthrough
         case .bitcoin: fallthrough
         case .dash: fallthrough
         case .bitcoinCash: fallthrough
@@ -43,7 +44,7 @@ public struct PublicKey {
     
     public var utxoAddress: Address {
         switch coin {
-        case .bitcoin, .litecoin, .dash, .bitcoinCash:
+        case .bitcoinTestNet, .bitcoin, .litecoin, .dash, .bitcoinCash:
             return try! LegacyAddress(address, coin: coin)
         case .ethereum:
             fatalError("Coin does not support UTXO address")
