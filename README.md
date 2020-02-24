@@ -28,7 +28,7 @@ You can check if the address generation is working right [here](https://iancolem
 ### Carthage
 To install with [Carthage](https://github.com/Carthage/Carthage), simply add this in your `Cartfile`:
 ```ruby
-github "essentiaone/HDWallet"
+github "serhiy1017/HDWalletSwiftSdk"
 ```
 ## Communication
 
@@ -134,4 +134,4 @@ print(privateKey.publicKey.address)
 ```
 
 ## License
-WalletKit is released under the [MIT License](https://github.com/essentiaone/HDWallet/blob/develop/LICENSE.md).
+WalletKit is released under the [MIT License](https://github.com/serhiy1017/HDWalletSwiftSdk/blob/develop/LICENSE.md).
