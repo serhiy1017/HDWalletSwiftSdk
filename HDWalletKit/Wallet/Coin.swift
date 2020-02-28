@@ -69,7 +69,8 @@ public enum Coin {
     public var wifAddressPrefix: UInt8 {
         switch self {
         case .bitcoinCash: fallthrough
-        case .bitcoinCash: fallthrough
+        case .bitcoinTestNet:
+            return 0xEF
         case .bitcoin:
             return 0x80
         case .litecoin:
@@ -116,6 +117,8 @@ public enum Coin {
         switch self {
         case .bitcoin:
             return "bitcoin"
+        case .bitcoinTestNet:
+            return "bitcoinTestNet"
         case .litecoin:
             return "litecoin"
         case .bitcoinCash:
