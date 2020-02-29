@@ -31,6 +31,10 @@ public struct PrivateKey {
     
     public init?(pk: String, coin: Coin) {
         switch coin {
+        case .bitcoinTestNet:
+            let decodedPk = Base58.decode(pk) ?? Data()
+            let wifData = decodedPk.dropLast(4).dropFirst()
+            self.raw = wifData
         case .ethereum:
             self.raw = Data(hex: pk)
         default:
@@ -91,7 +95,8 @@ public struct PrivateKey {
     
     public func get() -> String {
         switch self.coin {
-        case .bitcoinTestNet: fallthrough
+        case .bitcoinTestNet:
+            return self.wifCompressed()
         case .bitcoin: fallthrough
         case .litecoin: fallthrough
         case .dash: fallthrough
